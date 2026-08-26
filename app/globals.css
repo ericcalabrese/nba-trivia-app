@@ -24,3 +24,84 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.grid-container {
+  /* position: relative; */
+  width: 100%;
+  height: 100%;
+  isolation: isolate;
+  background-image: url("./../public/grid.png");
+  background-repeat: repeat;
+  background-size: auto;
+}
+
+#glow {
+  background: radial-gradient(
+    circle,
+    rgba(227, 1, 1, 0.5) 0%,     /* Primary red, strong center */
+    rgba(227, 1, 1, 0.3) 25%,    /* Mid fade */
+    rgba(227, 1, 1, 0.15) 40%,   /* Softer outer glow */
+    rgba(184, 0, 0, 0.12) 60%,   /* Darker red edge */
+    rgba(184, 0, 0, 0.08) 75%,   /* Subtle falloff */
+    rgba(153, 0, 0, 0.05) 90%,   /* Almost transparent edge */
+    rgba(153, 0, 0, 0.03) 95%,   /* Soft halo */
+    rgba(153, 0, 0, 0.01) 100% 
+  );
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.grid-base {
+  /* position: relative; */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* isolation: isolate; */
+  background-color: #131e25;
+
+  position: fixed;
+  /* inset: 0; */
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.background-white {
+  background-color: #FFFFFF;
+}
+
+.dark {
+  /* --background: 224 71.4% 4.1%; */
+  --background: var(--allstar-black);
+  --foreground: var(--allstar-white);
+
+  --card: 224 71.4% 4.1%;
+  --card-foreground: 210 20% 98%;
+
+  --popover: 224 71.4% 4.1%;
+  --popover-foreground: 210 20% 98%;
+
+  /* --primary: 210 20% 98%; */
+  /* --primary-foreground: 220.9 39.3% 11%; */
+  --primary: var(--allstar-green);
+  --primary-foreground: var(--allstar-white);
+
+  --secondary: 215 27.9% 16.9%;
+  --secondary-foreground: 210 20% 98%;
+
+  --muted: 215 27.9% 16.9%;
+  --muted-foreground: 217.9 10.6% 64.9%;
+
+  --accent: 215 27.9% 16.9%;
+  --accent-foreground: 210 20% 98%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 20% 98%;
+
+  --border: 215 27.9% 16.9%;
+  /* --input: 215 27.9% 16.9%; */
+  --input: var(--allstar-green);
+  --ring: 216 12.2% 83.9%;
+}

@@ -5,8 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../app/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -19,4 +18,41 @@ model User {
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
+}
+
+model Quiz {
+  id        String   @id @default(uuid())
+  youtubeId String   @unique
+  title     String
+  createdAt DateTime @default(now())
+
+  questions Question[]
+}
+
+model Question {
+  id String @id @default(uuid())
+
+  quiz   Quiz   @relation(fields: [quizId], references: [id])
+  quizId String
+
+  text      String
+  startTime Int
+  endTime   Int
+
+  choices Choice[] @relation("QuestionChoices")
+
+  correctChoiceId String? @unique
+  correctChoice   Choice? @relation("QuestionCorrectChoice", fields: [correctChoiceId], references: [id])
+}
+
+model Choice {
+  id String @id @default(uuid())
+
+  question   Question @relation("QuestionChoices", fields: [questionId], references: [id])
+  questionId String
+
+  text String
+  order Int?
+
+  correctFor Question? @relation("QuestionCorrectChoice")
 }
